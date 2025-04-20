@@ -11,6 +11,7 @@ import { telemetryService } from "./services/telemetry/TelemetryService"
 import { WebviewProvider } from "./core/webview"
 import { createTestServer, shutdownTestServer } from "./services/test/TestServer"
 import { ErrorService } from "./services/error/ErrorService"
+import { WelcomeTabProvider } from "./core/welcome/WelcomeTabProvider"
 
 /*
 Built using https://github.com/microsoft/vscode-webview-ui-toolkit
@@ -32,6 +33,23 @@ export function activate(context: vscode.ExtensionContext) {
 	ErrorService.initialize()
 	Logger.initialize(outputChannel)
 	Logger.log("Cline extension activated")
+
+	// Create the welcome tab provider
+	const welcomeTabProvider = new WelcomeTabProvider(context)
+
+	// Show the welcome tab if it hasn't been shown before
+	welcomeTabProvider.showWelcomeTabIfNeeded().catch((err) => {
+		Logger.error("Failed to show welcome tab", err)
+	})
+
+	// Register command to manually show the welcome tab
+	context.subscriptions.push(
+		vscode.commands.registerCommand("cline.showWelcomeTab", () => {
+			welcomeTabProvider.showWelcomeTab().catch((err) => {
+				Logger.error("Failed to show welcome tab", err)
+			})
+		}),
+	)
 
 	const sidebarWebview = new WebviewProvider(context, outputChannel)
 
