@@ -26,6 +26,7 @@ export interface WebviewMessage {
 		| "requestLmStudioModels"
 		| "openImage"
 		| "openInBrowser"
+		| "createRuleFile"
 		| "openMention"
 		| "showChatView"
 		| "refreshOpenRouterModels"
@@ -72,7 +73,6 @@ export interface WebviewMessage {
 		| "toggleFavoriteModel"
 		| "grpc_request"
 		| "toggleClineRule"
-		| "deleteClineRule"
 
 	// | "relaunchChromeDebugMode"
 	text?: string
