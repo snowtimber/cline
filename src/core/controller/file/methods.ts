@@ -3,10 +3,12 @@
 
 // Import all method implementations
 import { registerMethod } from "./index"
+import { createRuleFile } from "./createRuleFile"
 import { openFile } from "./openFile"
 
 // Register all file service methods
 export function registerAllMethods(): void {
 	// Register each method with the registry
 	registerMethod("openFile", openFile)
+	registerMethod("createRuleFile", createRuleFile)
 }
