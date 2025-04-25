@@ -59,7 +59,6 @@ export interface WebviewMessage {
 		| "telemetrySetting"
 		| "openSettings"
 		| "fetchOpenGraphData"
-		| "checkIsImageUrl"
 		| "invoke"
 		| "updateSettings"
 		| "clearAllTaskHistory"
