@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.14.0
+
+### Minor Changes
+
+-   aed152b: add truncation notice when truncating manually
+
+### Patch Changes
+
+-   5a8e9d8: protobus migration for openImage
+-   d4bd755: fix cost calculation
+
 ## [3.13.3]
 
 -   Add download counts to MCP marketplace items
