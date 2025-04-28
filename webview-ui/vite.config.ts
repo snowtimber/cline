@@ -18,6 +18,7 @@ export default defineConfig({
 	},
 	build: {
 		outDir: "build",
+		minify: false, // Disable minification for better debugging
 		rollupOptions: {
 			output: {
 				inlineDynamicImports: true,

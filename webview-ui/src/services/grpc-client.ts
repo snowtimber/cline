@@ -43,6 +43,7 @@ function createGrpcClient<T extends ProtoService>(service: T): GrpcClientType<T>
 
 				// Set up one-time listener for this specific request
 				const handleResponse = (event: MessageEvent) => {
+					console.log(" ** Recieved message " + JSON.stringify(event))
 					const message = event.data
 					if (message.type === "grpc_response" && message.grpc_response?.request_id === requestId) {
 						// Remove listener once we get our response
